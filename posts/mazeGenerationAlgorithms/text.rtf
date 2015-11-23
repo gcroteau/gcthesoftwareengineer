@@ -1,0 +1,86 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww15840\viewh6560\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Some time ago I wrote a program that generates mazes. For this purpose I explored a variety of algorithms and I will share with you the ones that I found the most interesting.\
+<h3>First things first, some terminology</h3>\
+<ul>\
+	<li>Cell: a block that can be surrounded by at most four walls</li>\
+	<li>Board: an m x n matrix of cells</li>\
+	<li>Unless mentioned otherwise, the initial board has all its cells surrounded by walls</li>\
+</ul>\
+<h3>The algorithms</h3>\
+<h4>Binary tree</h4>\
+Probably the simplest algorithm you could use to generate mazes. Without surprise it is also the one that creates the most predictable mazes. In order to solve them, you simply have to follow a diagonal, every time. Therefore, the only reason I take time to write about this algorithm is its simplicity. The pseudo-code for binary tree is as follow:\
+\
+[code language="text"]\
+    for each cell of the board\
+        if cell is in the last column\
+            Carve the wall below\
+        else if cell is in the last row\
+            Carve the wall to the right\
+        else\
+            Randomly carve the wall to the right or to the left\
+[/code]\
+\
+As you can see, the name of this algorithm come from the fact that for each cell, we randomly decide to carve the walls to the right or bellow. This is what creates the diagonal shape on the board.\
+<h4>Recursive backtracker</h4>\
+This is probably my favorite algorithm for maze generation. It is simple, easy to understand, easy to implement and it generates a very nice maze. The algorithm is as follow:\
+\
+[code language="text"]\
+    Choose a cell randomly\
+    Set the chosen cell as visited\
+    Add the chosen cell to a stack\
+\
+    while the stack is not empty\
+        CurrentCell = top of the stack\
+        if there is at least one cell not visited around CurrentCell\
+            Choose randomly an unvisited cell around CurrentCell\
+            Carve the wall between CurrentCell and the chosen cell\
+            Add the chosen cell to the stack\
+        else // All cells around CurrentCell have already been visited\
+            Pop the stack\
+[/code]\
+\
+<h4>Recursive division</h4>\
+The interesting particularity of this algorithm is that, instead of carving its way in a board completely walled, it starts with an empty board and recursively adds walls (with a hole in them) to the board. For this algorithm, we use the concept of chambers. A chamber is an area where we will add a wall, in order to create two new chambers, which are linked by a hole. We also have to specify a desired resolution for the board. When a chamber reaches this resolution, the algorithm will go back to the previous chamber.\
+\
+[code language="text"]\
+    Create the first chamber // The empty board\
+    Add the first chamber to a stack\
+    \
+    while the stack is not empty\
+        CurrentChamber = top of the stack\
+        if the desired resolution is reached for CurrentChamber\
+            Pop the stack\
+        else if CurrentChamber is already divided\
+            Pop the stack\
+        else\
+            Add a wall at a random position with a random orientation (vertical or horizontal) to CurrentChamber\
+            Carve a hole in that wall at a random position\
+            Add the two new chambers on the stack\
+[/code]\
+\
+This algorithm generates square shaped patterns on the board. With a bird's-eye view, it is possible to know what part of the maze you can safely not explore in order to find the solution more quickly.\
+<h4>Eller</h4>\
+All the algorithms we have seen until now needed to know the entire maze. With the Eller algorithm, you build the maze row by row, discarding the last row when you are done with it. That's a very good idea, but what is the magic element that makes it work? Well, each cells belong to a set. At first, each cell is in its own set. When the algorithm carves a wall between two cells, they will be regrouped in the same set, passing this information to the next row. The pseudo-code goes as follow:\
+\
+[code language="text"]\
+    Put each cell in its own set\
+\
+    while not all rows have been generated\
+        for each cell in the current row\
+            if two adjacent cells are not in the same set\
+                Randomly decide to carve the wall or not\
+        for each set in the current row\
+            Randomly decide where to carve a horizontal wall\
+        for each cell in the current row\
+            if there is a connection between the current row and the next row\
+                Put the cell in the next row in the same set as the cell above it\
+        Save the current row\
+        Put the next row as the current row\
+[/code]\
+\
+You will have to consider a special case for the final row, since the algorithm won't have to carve horizontal walls. It is also possible to customize this algorithm. For example, given a big enough set, you could carve more than one wall. That is pretty much it, there is a lot of other maze generation algorithms that you can try, these were only the ones that have stuck in my head.}
