@@ -1,0 +1,58 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;}
+\margl1440\margr1440\vieww14380\viewh8200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\b\fs24 \cf0 \ul \ulc0 How to Watch DOM Mutations
+\b0 \ulnone \
+\
+Category: Web Development\
+Tag: DOM, JavaScript\
+\
+Lets say that you want to watch DOM mutations. How would you do that?\
+\
+<blockquote>\
+A DOM mutation is any change that can happen to the DOM.\
+</blockquote>\
+\
+Well, you can use <i>MutationObserver</i>. With this, you will be able to react to the DOM changes.\
+\
+How about we do a little example? Lets say that a third party library adds a DOM element that has a specific class. You can\'92t predict at what point the element will be added, but you have to do some special treatment when it is added. The code to do that would look like this:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 [code language=\'93javascript\'94]\
+\
+\pard\pardeftab720
+
+\f1\fs26 \cf2 \expnd0\expndtw0\kerning0
+// Declare your observer\
+var mutationObserver = new MutationObserver(function(mutations) \{\
+	mutations.forEach(function(mutation) \{\
+		mutation.addedNodes.forEach(function(node) \{\
+			if (node.className && node.className.indexOf('the-class-we-look-for') > -1)) \{\
+				// Do the treatment when the element is added to the DOM\
+\
+				// Stop to observe now or later\
+				// mutationObserver.disconnect();\
+			\}\
+		\}\
+	\});\
+\});\
+\
+// ... Later start to observe ...\
+var target = document.querySelector('#where-the-element-will-be-added');\
+var config = \{ attributes: true, childList: true, characterData: true \};\
+observer.observe(target, config);\
+\
+// ... Later stop to observe \'85\
+mutationObserver.disconnect();\
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 [/code]\
+\
+You need to specify what is your target, in our case, it would be the element where the element we are looking for will be added. You also have to pass a config object. The three attributes listed above have to be set to true, otherwise an error will be thrown. You can find a list of all the available options right here: https://developer.mozilla.org/en/docs/Web/API/MutationObserver#MutationObserverInit.\
+On a final note, don\'92t forget to stop the observer at some point. Otherwise it will stay alive indefinitely.\
+\
+For more details on <i>MutationObserver</i>, you can check out https://developer.mozilla.org/en/docs/Web/API/MutationObserver.}
