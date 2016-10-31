@@ -1,2 +1,2 @@
 # gcthesoftwareengineer
-The content of gcthesoftwareengineer.wordpress.com website.
+The content of gcthesoftwareengineer.com website.
