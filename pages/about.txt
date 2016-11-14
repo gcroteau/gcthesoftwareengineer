@@ -1,0 +1,7 @@
+My name is Guillaume Croteau. I am a software engineer located in Quebec, Canada.
+
+In this blog I will put some coding tutorials, algorithms, math stuff, etc. You will see new content in here at least once a month.
+
+This blog is at his early stage, so expect many changes in the upcoming weeks.
+
+Feel free to share and comment, your feedback is greatly appreciated! 
