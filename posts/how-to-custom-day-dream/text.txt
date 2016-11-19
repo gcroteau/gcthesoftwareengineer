@@ -18,7 +18,7 @@ Requirements for this tutorial:
 </ul>
 Let's start!
 <h3>Setting up the project</h3>
-First, you need to create a new project in Android Studio. Select the minimum SDK at 5.1, if you don't see it in the drop down, make sure you have the latest version of the Android SDK. Finally, since you will only need a <em>DreamService</em>, select "Add No Activity".
+First, you need to create a new project in Android Studio. Select the minimum SDK at 5.1. If you don't see it in the drop down, make sure you have the latest version of the Android SDK. Finally, since you will only need a <em>DreamService</em>, select "Add No Activity".
 <h3>Creating the Daydream</h3>
 First, take an image of your choice and put it in <em>app/src/main/res/drawable</em>. You can use the one above if you want.
 

@@ -4,7 +4,7 @@ How To: Abort an HTTP Call Using AngularJS
 Categories: Web Development
 Tags: AngularJS, JavaScript
 
-So, you use the $http service in order to do HTTP requests. But for some reason, you want to be able to cancel some of those requests. For example, you have an HTTP call that takes some time to complete, therefore you offer the user the possibility to cancel the request. Let’s take a look at how we can do that.
+In AngularJS, you use the $http service in order to do HTTP requests. For some reason, you want to be able to cancel some of those requests. For example, you have an HTTP call that takes some time to complete, therefore you offer the user the possibility to cancel the request. Let’s take a look at how we can do that.
 
 First, you might know that you can pass a config argument to the method call. For example:
 
@@ -18,7 +18,7 @@ $http(config); // config is mandatory
 
 In this config object, you can specify a timeout attribute. This is the attribute that we are going to use in order to cancel the HTTP request. This attribute can take either a number or a promise.
 
-The number represent a timeout in milliseconds. If the query is not completed when the specified timeout expire, then the query is aborted.
+The number represents a timeout in milliseconds. If the query is not completed when the specified timeout expires, then the query is aborted.
 
 This can be useful, but we want to be able to abort the HTTP call when a specific condition is met, so how do we do that? We need a deferred object. To put it simply, a deferred object represents a task that will finish later during the life time of your web app. We use this deferred object to create a promise. That promise will be set to the timeout attribute of our config object. If the promise resolves, then the HTTP call is aborted.
 
