@@ -1,0 +1,21 @@
+How To: Create Custom Syntax Highlighting in VS Code Extension
+--------------------------------------------------------------
+
+
+Setup the project
+
+Install npm
+
+-> npm install -g yo generator-code
+    Installs yeoman and the VS code generator for yeoman
+
+-> yo code
+    (New language support, press enter (no url, will create our own tmLanguage))
+    name
+    identifier
+    description
+    publisher name (if you publish this to vc code extension store, this is the displayed name)
+
+
+Setup done!
+
