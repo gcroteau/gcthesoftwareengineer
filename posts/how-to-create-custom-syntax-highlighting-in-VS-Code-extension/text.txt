@@ -1,46 +1,34 @@
 How To: Create Custom Syntax Highlighting in a Visual Studio Code Extension
 ---------------------------------------------------------------------------
+Visual Studio Code is a really popular IDE these days. It is my new go-to when I need a light and versatile IDE. It is completely customizable. You can create custom extensions in JavaScript or TypeScript with snippets and more. You can also do custom syntax highlighting for an existing language, or for a new one. For example, it could be very useful for reading log files more easily. Unfortunately, I didn't find much examples or tutorials on that matter.
 
-Visual Studio Code is a really popular IDE these days. It is my new go-to when I need a light and versatile IDE. It is completly customizable. You can create custom extensions in JavaScript or TypeScript with snippets and more. You can also do custom syntax highlighting for an existing language, or for a new one. For example, it could be very useful for reading log files more easily. Unfortunately, I didn't find much examples or tutorials on that matter.
+Here is a little example on how to create a VS Code extension with custom syntax highlighting. For this example, we will generate custom syntax highlighting for log files with a .log extension. Please get/clone the example on GitHub, it will be way easier to follow through with this: <a href="https://github.com/gcroteau/syntax-highlighting-VS-Code-example">https://github.com/gcroteau/syntax-highlighting-VS-Code-example</a>.
+<h3>Setting up the project</h3>
+First of all, you need npm installed on your machine. Go to <a href="https://www.npmjs.com/get-npm">https://www.npmjs.com/get-npm</a> to install it.
 
-Here is a little example on how to create a VS Code extension with custom syntax highlighting. For this example, we will generate custom syntax highlighting for log files with a .log extension. Please get/clone the example on github, it will be way easier to follow through with this: https://github.com/gcroteau/syntax-highlighting-VS-Code-example.
-
-<h3>Setup the project</h3>
-
-First of all, you need npm installed on your machine. Go to https://www.npmjs.com/get-npm to install it.
-
-Once this is done, you need to install Yeoman and the VS Code genrator for Yeoman. This will allow us to create an empty VS Code extension with only one command. To install Yeoman, run the following command. It is recommended to install Yeoman globally on your machine, hence the -g command option.
-
-npm install -g yo generator-code
-
+Once this is done, you need to install Yeoman and the VS Code generator for Yeoman. This will allow us to create an empty VS Code extension with only one command. To install Yeoman, run the following command. It is recommended to install Yeoman globally on your machine, hence the -g command option.
+<pre class="lang:sh decode:true">npm install -g yo generator-code</pre>
 Once this is installed, navigate where you want to generate your extension. Then, run the following command to start the generation of your extension.
-
-yo code
-
-With the arrow keys, select New language support. When asked for a url for the language, leave it empty and simply press enter. Next you will be asked to fill some fields. We will name our extention log. The publisher name is the author name that will be shown if you ever ditribute your extension to the VS Code official list of extensions.
+<pre class="lang:sh decode:true">yo code</pre>
+With the arrow keys, select <em>New language support</em>. When asked for a URL for the language, leave it empty and simply press enter. Next you will be asked to fill some fields. We will name our extension <em>log</em>. The publisher name is the author name that will be shown if you ever distribute your extension to the VS Code official list of extensions.
 
 Once this is completed, your setup is finished. Open your new extension folder in VS Code.
-
 <h3>The language</h3>
-
 The most important file for us is under the syntaxes folder. The log.tmLanguage.json file is where we will put all the regexes that defines our language. Some basic regexes have already been generated. Here is an explanation of this file.
+<ul>
+ 	<li>The patterns dictionary is where you will include each repository of regexes you created. It makes things cleaner and allows reuse of repositories for more complex languages.</li>
+ 	<li>The repository dictionary is where you will put your collections of regexes. You can create multiple group of patterns. For our example, we will create a <em>keywords</em> and a <em>date</em> list of patterns.</li>
+ 	<li>Our first list of patterns, <em>keywords</em>, will highlight the different keywords found in our logs. We will give a different color for <em>LOG:</em>, <em>--SUC--</em> and <em>--ERR--</em>. This is a really simple regex match.</li>
+ 	<li>The second list of patterns, <em>date</em>, is a little more complex. Here, we use <em>captures</em> in order to only highlight the numbers of the date. It will only highlight the first and third match.</li>
+</ul>
+Now that we have our matches, we need our colors. The color associated with a match is specified by the name attribute. The color value of this name is defined by the current theme used by VS Code. Therefore, to consult all the available colors, you can open a default theme JSON file. It is located under the installation folder of VS Code (on windows, under AppData). For example, you can search for <em>dark_vs.json</em>, which is located under <em>app/extensions/defaults/themes/</em>. Therefore, it is not possible to create custom colors names for your language, unless you also create a custom theme for it. This is why we add <em>.log</em> to the name of the color. This allows you, or anyone, to be able to create a specific color for this match in a custom theme while keeping support for the defaults themes.
 
-The patterns dictionnary is where you will include each repository of regexes you created. It makes things cleaner and allows reutilisation of repositories for more complex languages.
-
-The repository dictionnary is where you will put your collections of regexes. You can create mutliple group of patterns. For our example, we will create a keywords and date list of patterns.
-
-Our first list of patterns, keywords, will highlight the different keywords found in our logs. We will give a different color for LOG:, --SUC-- and --ERR--. This is a really simple regex match.
-
-The second list of patterns, date, is a little more complex. Here, we use captures in order to only hightlight the numbers of the date. It will only hightlight the first and third match.
-
-Now that we have our matches, we need our colors. The color associated with a match is specified by the name attribute. The color value of this name is defined by the current theme used by VS Code. Therefore, to consult all the available colors, you can open a default theme json file. It is located under the installation folder of VS Code (on windows, under AppData). For example, you can search for dark_vs.json, which is located under app/extensions/defaults/themes/. Therefore, it is not possible to create custom colors names for your language, unless you also create a custom theme for it. This is why we add a .log to the name of the color. This allows you, or anyone, to be able to create a specific color for this match in a custom theme while keeping support for defaults themes.
-
-This is pretty much all that needs to be known for custom highlighting with VS Code. Simply run it by pressing F5 and open test-files/example.log to see it in action.
+This is pretty much all that needs to be known for custom highlighting with VS Code. Simply run it by pressing F5 and open <em>test-files/example.log</em> to see it in action.
 
 I leave you with some links on how to create and install a custom extension with VS Code.
-
-To publish or to simply create the extension intaller: https://code.visualstudio.com/docs/tools/vscecli
-More on how to create extensions for VS Code: https://code.visualstudio.com/docs/extensions/overview
-Pluralsight course on VS Code extensions and snippets: https://app.pluralsight.com/library/courses/visual-studio-code-write-first-extension/table-of-contents
-
+<ul>
+ 	<li>To publish or to simply create the extension installer: <a href="https://code.visualstudio.com/docs/tools/vscecli">https://code.visualstudio.com/docs/tools/vscecli</a></li>
+ 	<li>More on how to create extensions for VS Code: <a href="https://code.visualstudio.com/docs/extensions/overview">https://code.visualstudio.com/docs/extensions/overview</a></li>
+ 	<li>Pluralsight course on VS Code extensions and snippets: <a href="https://app.pluralsight.com/library/courses/visual-studio-code-write-first-extension/table-of-contents">https://app.pluralsight.com/library/courses/visual-studio-code-write-first-extension/table-of-contents</a></li>
+</ul>
 Have fun creating your own syntax highlights!
