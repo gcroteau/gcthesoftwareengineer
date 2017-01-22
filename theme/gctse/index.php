@@ -1,11 +1,11 @@
+<!-- Main Template File -->
 <?php
-/* Main Template File*/
     get_header();
 ?>
 
 <div class="main-content-width-wrapper">
-        <div class="index-entry">
-            <main class="main-content">
+        <div>
+            <main>
                 <?php
                     // Start the loop
                     if (have_posts()) :

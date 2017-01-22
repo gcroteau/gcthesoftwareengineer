@@ -27,6 +27,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 .main-content-width-wrapper {
-    width: 70%; 
+    display: inline-block;
+    width: 70%;
 }
 
+.navigation-container li{
+    list-style: none;
+    display: inline-block;
+}

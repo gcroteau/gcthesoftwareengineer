@@ -1,7 +1,6 @@
 <?php 
 
 /* ---- Add Title Tag---- */
-
 if ( ! function_exists ('gctse_setup') ) :
 
     function gctse_setup() {
@@ -12,7 +11,6 @@ endif;
 add_action('after_setup_theme', 'gctse_setup');
 
 /* ---- Add Stylesheets ---- */
-
 function gctse_styles() {
     
     // Enqueue Main Stylesheet
@@ -21,3 +19,13 @@ function gctse_styles() {
     //wp_enqueue_style('gctse_google_fonts', 'https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700' );
 }
 add_action('wp_enqueue_scripts', 'gctse_styles');
+
+/* ---- Register Menus ---- */
+function register_gctse_menus() {
+    register_nav_menus(
+        array(
+            'primary' => __('Primary Menu')
+        )
+    );
+}
+add_action('init', 'register_gctse_menus');
