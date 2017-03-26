@@ -1,0 +1,22 @@
+How To: Format Strings in JavaScript
+------------------------------------
+
+Categories: Web Development
+Tags: JavaScript
+
+The majority of modern programming languages offer the possibility to format strings. For example, in Python, you can do the following.
+
+[code="python"]
+s = "The number %d has been added to the string." % 5
+[/code]
+
+If you want to do the equivalent in JavaScript, you will have to either create your own string parser, or use Template literals.  To instantiate a Template literal, you have to use the grave accent (`) instead of single or double quotes around your string.
+
+In order to reproduce the Python example above in its JavaScript equivalent, we would have something like this:
+
+[code="javascript"]
+var myNumber = 5;
+var s = `The number ${myNumber} has been added to the string.`;
+[/code]
+
+You can check out the documentation on <i>Template literals</i> here: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a>
