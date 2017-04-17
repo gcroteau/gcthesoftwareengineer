@@ -1,0 +1,81 @@
+How To: Mock a Static Method in Java
+------------------------------------
+
+As you know, at the time of writing, mainstream Java mock libraries such as Mockito or EasyMock cannot mock static methods, final classes, constructors, etc. These limitations sometime force us to put aside good design for test implementation. This is where PowerMock comes into play. It offers some useful functionnalities, such as mocking static methods.
+
+Note that since PowerMock is so powerful, putting it in the hands of inexperienced developers can lead to bad design choices.
+
+Lets see how we can mock a static method using JUnit, Mockito and PowerMock.
+
+Lets say that we have a method that needs to use the current time. We would like to mock the call to System.currentTimeMillis() so that we could control the returned time.
+
+[code language=“java”]
+public class MyClass {
+
+	// Class implementation
+
+	public void myMethod() {
+		// Method implementation
+		
+		long myTime = System.currentTimeMillis();
+
+		// Do something with myTime
+	}
+}
+[/code]
+
+How can we mock the call the currentTimeMillis?
+
+If we could mock static methods with Mockito, we would have something like this:
+
+[code language=“java”]
+public class MyClassTest {
+	
+	@Test
+	public void meeningfulTestNameGoesHere() {
+		// given
+		MyClass myClass = new MyClass();
+
+		// when
+		when(System.currentTimeMillis()).thenReturn((long) 1);  // Does not work
+
+		myClass.myMethod();
+
+		// then
+		// Verify or assert something
+	}
+}
+[/code]
+
+Lets see how we can mock this using PowerMock.
+
+First we need to tell JUnit to run PowerMock’s runner instead of JUnit's.
+
+Then, we need to prepare the class that uses the static method calls. In our case, this is MyClass.
+
+After that, we are ready to write our test.
+
+[code language=“java”]
+@RunWith(PowerMockRunner.class) // Use PowerMock’s runner
+@PrepareForTest({MyClass.class}) // Prepare the class that calls a static method
+public class MyClassTest {
+	@Test
+	public void meeningfulTestNameGoesHere() {
+		// given
+		MyClass myClass = new MyClass();
+
+		// when
+		PowerMockito.mockStatic(System.class);
+		when(System.currentTimeMillis()).thenReturn((long) 1);
+
+		myClass.myMethod();
+
+		// then
+		// Verify or assert something
+	}
+}
+[/code]
+
+There you go!
+
+You can find PowerMock on Github here: https://github.com/jayway/powermock.
