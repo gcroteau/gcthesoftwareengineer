@@ -1,0 +1,12 @@
+Manage Your RSS Feeds with Feedly
+---------------------------------
+
+I always had a hard time to follow all of the podcasts, blogs, news websites, etc. that I am interested in. Subscribing to newsletters is not enough. It is hard to manage all that information given the number of emails we receive every day.
+
+This is why I use <strong>Feedly</strong> to manage my <em>RSS</em> feeds. All your feeds from podcasts, blogs, or anything that you want to follow, will be managed for you so that you can easily keep up with them.
+
+I suggest you take a look at it if you haven’t already, it is worth the try.
+
+<a href="http://feedly.com">http://feedly.com</a>
+
+category: TheMoreYouKnow
