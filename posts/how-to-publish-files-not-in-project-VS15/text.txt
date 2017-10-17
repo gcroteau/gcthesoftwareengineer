@@ -1,0 +1,53 @@
+How To: Publish Files that Are Not Included in a Visual Studio Project
+----------------------------------------------------------------------
+
+Categories: Web Development
+Tags: Visual Studio
+
+If you are building a web application using Visual Studio, you are likely to use the <i>Publish</i> feature.
+
+Occasionally, you will want to exclude some files of your project and include external ones in the publish process. How would you do that? Let's use the following example.
+
+Prior to deploying your web application, you will minify your JavaScript files in one *.min.js file using a tool like Gulp, Grunt, etc. When you click on <i>Publish</i>, you want your *.min.js file to be published and the other JavaScript files to be ignored. 
+
+The minified JavaScript file is not included in the project, nor should it. In order to publish it, you will have to edit your .csproj file with your favorite text editor. Add the following <i>PropertyGroup</i> element to the .csproj file.
+
+[code language=xml]
+<PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+    CustomCollectFiles;
+    $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+</PropertyGroup>
+[/code]
+
+Just under this new <i>PropertyGroup</i>, add the following <i>Target</i> element.
+
+[code language=xml]
+<Target Name="CustomCollectFiles">
+    <!-- Copy minified JavaScript files -->
+    <ItemGroup>
+        <CompressedScripts Include="path_to_minified_script\*.min.js" />
+        <FilesForPackagingFromProject Include="%(CompressedScripts.Identity)">
+            <DestinationRelativePath>path_to_minified_script\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+        </FilesForPackagingFromProject>
+    </ItemGroup>
+</Target>
+[/code]
+
+This will take care of publishing your minified JavaScript file. Now, to exclude unminified JavaScript files, add the following <i>PropertyGroup</i> element.
+
+[code language=xml]
+<PropertyGroup>
+    <!-- Do not publish JavaScript files -->
+    <ExcludeFilesFromDeployment>
+        path_to_js_root\**\*.js
+    </ExcludeFilesFromDeployment>
+</PropertyGroup>
+[/code]
+
+That's it, now you can publish you minified JavaScript without the unminified files.
+
+You can also include style sheets and any type of files that are not included in your project by replacing every occurrences of <i>CompressedScripts</i> by <i>CompressedStylesheets</i> or <i>_CustomFiles</i> in the config example above.
+
+You can now customize your <i>Publish</i> process to your needs, enjoy!
