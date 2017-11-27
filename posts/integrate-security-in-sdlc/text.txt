@@ -1,31 +1,35 @@
-Integrating Security in the SDLC
---------------------------------
+Integrating Security in the SDLC - A Different Approach
+-------------------------------------------------------
 
-As I am specilizing in application security, I begin to realize the problems that gives us badly protected applications. One of those problem, if you ask me, is the fact that for most organizations, security is an after thaugh. They do some penetration testing on the applications only from time to time, usually a few weeks or a few days before a push to production. This way of doing things is the best receipe for disaster. It usually ends up with the introduction of technical dept related to security. 
+Category: Security
+Tag: Agile, DevOps
 
-<Insert image of tweet of technical dept here.>
+As I am specializing in application security, I begin to realize the problems that lead to badly protected applications. One of those problems, if you ask me, is the fact that for most organizations, security is an afterthought. They do some penetration testing on the applications only from time to time, usually a few weeks or a few days before a push to production. This way of doing things is the best recipe for disaster. It usually ends up with the introduction of technical dept related to security. 
 
-Numberous studies demonstrated that the earlier you do security in you development lifecycle, the less it will cost to fix or mitigate the security issues. But how do you include the security related work in your workflow? 
+<<<Insert image of tweet of technical dept here.>>>
 
-<h3>Security Stories</h3> **verify the strengh of this header compared to other posts**
+Numerous studies demonstrated that the earlier you do security in you development lifecycle, the less it will cost to fix or mitigate the security issues found. But how do you include security related work in your workflow? 
 
-One potential solution to this problem are Security Stories. This concept comes from the publication of SAFECode's "<a href="http://safecode.org/publication/SAFECode_Agile_Dev_Security0712.pdf">Practical Security Stories and Security Tasks for Agile Development Environments</a>". In a nutshell, the goal is to integrate security in a process that is already known and used by developpers; Agile. With this approach, you add security tasks or features in the product's backlog and prioritize them like the other items.
+<h3>Security Stories</h3>
 
-One of the perks of this approach is that it saves the developpers a lot of time. Once the research on a particular subject are done once, they do not have to do it again. Let's take XSS for example. You decide to go and create a security story to protect against XSS. You do your research on how to prevent this type of attack. Then, you gather your findings and format them in the for of a security story. The developpers now only have to consult the security story you created and pick the tasks that apply to them. They do not have to do a Google search like "how do you XSS" everytime they encounter this problem.
+One potential solution to this problem are the Security Stories. This concept comes from the publication of SAFECode's "<a href="http://safecode.org/publication/SAFECode_Agile_Dev_Security0712.pdf">Practical Security Stories and Security Tasks for Agile Development Environments</a>". In a nutshell, the goal is to integrate security in a process that is already known and used by developers; Agile. With this approach, you add security tasks or features in the product's backlog and prioritize them like the other items.
 
-The other major benefit of this approach is that it makes you save money. Using security stories, you will integrate security tasks directly in the sprint planning of a team. Teams will do a story early intead of fixing a bug latter.
+One of the perks of this approach is that it saves the developers a lot of time. How? By doing the researches on a particular subject only once. Let's take XSS for example. The application security team decides to create a security story regarding XSS protection. The application security team members do their researches on how to prevent this type of attack. Then, they gather their findings and format them in the form of a security story. The developers now only have to consult the security story you created and pick the tasks that apply to them. They do not have to do a Google search like "how do you XSS" every time they encounter this problem.
 
-Security Stories is a way to bake security in the product you are building, instead of bolting security on it. An image is worth a thousand words:
+The other major benefit of this approach is that it makes you save money. Using security stories, you will integrate security tasks directly in the sprint planning of a team. Teams will do a story early instead of fixing a bug later.
 
-<Insert baked in vs bolted on images here.>
+Security Stories are a way to bake security in the product you are building, instead of bolting security on it. An image is worth a thousand words:
+
+<<<Insert baked in vs bolted on images here.>>>
 
 <h3>Beyond SAFECode Proposal</h3>
 
-Where I work, we started to use Security Stories on few projects for the last few months. We took SAFECode white paper and adapted it to our needs. Here are a few changes we made.
+At work, we started to use Security Stories on a few projects for the last months. The application security team took SAFECode's white paper and adapted it to the reality of the company. Here are a few changes we made.
 
-First, instead of specifically assigning a task to a particular role, we associate it to a type (i.e. Architecture, Implementation, Verification). We did that because more often than not, a particular person can take more than one role. We felt it is easier to know when to do a task that way. For example, unit testing is part of the verification phase. But should it be given to a developper or to a QA? It depends on the team or the organization. We wanted to abstract ourselves from that.
+First, instead of assigning a task to a specific role, we associate it to a type (i.e. Architecture, Implementation, Verification). We did that because more often than not, a particular person can take more than one role. We found it easier to know when to do a task that way. For example, unit testing is part of the verification phase, but should it be given to a developer or to a QA? It depends on the team or on the organization. We wanted to abstract ourselves from that kind of detail.
 
-Second, one of the most recurent feed back that we got from the developpers is that the Security Stories proposed by SAFECode are way to vague. For example, here is a task to help you protect yourself against CSRF; "Use one of the many available librairies and frameworks that takes CSRF into account.". Therefore, we took those stories and added:
+Second, one of the most recurrent feedback that we got from the developers is that the Security Stories proposed by SAFECode are to vague. For example, here is a task to help you protect your application against CSRF; "Use one of the many available libraries and frameworks that takes CSRF into account.". That is not very useful. Therefore, we took those stories and added:
+
 <ul>
 <li>
     Technology specific recommendations
@@ -34,27 +38,62 @@ Second, one of the most recurent feed back that we got from the developpers is t
     Task details, external links for reference
 </li>
 <li>
-    Notes, to specify when the task applies or not, things to consider, etc.
+    Notes, to specify when a task applies or not, things to consider, etc.
 </li>
 <li>
     Examples, like how to implement a simple whitelist, etc.
 </li>
 </ul>
 
-Third, we added new Stories. SAFECode white paper include 36 Security Stories. We added Stories that we felt were missing (ex: CORS related story) or are specific to the enterprise (ex: OAuth2). We now have over 70 Security Stories. We are still trying to figure out the right level of granularity between the stories. For example, we do not want one big story for everything related to Web. On the other hand, you do not want to end up with 50 stories only for web-related subjects. As we end up with a lot of stories, we need to be able to group them. We grouped them by "type" (e.g. authentication, authorization, web, etc.), but also according to the OWASP Top 10. The former is useful to easily find the story you are looking for. The latter is useful for teams looking to cover the Top 10.
+Third, we added new stories. SAFECode's white paper includes 36 Security Stories. We added stories that we thought were missing (ex: a CORS related story) or are specific to the company context (ex: OAuth2). We now have over 70 Security Stories. We are still trying to figure out the right level of granularity between the stories. For example, we do not want one big story for everything related to Web. On the other hand, we do not want to end up with 50 stories for web-related subjects. As we end up with a lot of stories, we need to be able to group them. We grouped them by "type" (e.g. authentication, authorization, web, etc.), but also according to the OWASP Top 10. The former is useful to easily find the story you are looking for. The latter is useful for teams looking to cover the OWASP Top 10.
 
-**Insert a story example?**
+Here is an example of our improved security stories. There are more tasks associated with it, but for simplicity, I've cut it to one.
 
-<h3>How to Integrate Storie in the Workflow</h3>
+<h4>
+[Security Story] I Want to Ensure Proper Exception Handling through the Product
+</h4>
+<ul>
+    <li>
+        Implementation
+    </li>
+    <ul>
+        <li>
+            [Security Task] Ensure there is no information exposure through error messages
+        </li>
+        <ul>
+            <li>
+                Note: Do not use the client to hide server-side error details
+            </li>
+            <li>
+                ASP.NET
+            </li>
+            <ul>
+                <li>
+                    <a href="https://www.owasp.org/index.php/Error_Handling#Web.config">Enable customErrors in Web.config</a>
+                </li>
+            </ul>
+            <li>
+                Java Servlet
+            </li>
+            <ul>
+                <li>
+                    <a href="https://www.whitehatsec.com/blog/error-handling-in-java-web-xml/">Error handling in Java web.xml</a>
+                </li>
+            </ul>
+        </ul>
+    </ul>
+</ul>
 
-All of this might sound good, but now that you have all of those stories and tasks, how do you integrate the them in the backlog? First easy thing you can do is make sure that your Security Stories are publicly available to everyone in the compagny. It can be a database, on your intranet, on SharePoint, whatever. The important thing is that everyone can go there and grab the stories that will make their product safer.
+<h3>How to Integrate Security Stories in the Workflow</h3>
 
-But how do someone knows which task to include to the backlog? The answer to that is Threat Modeling. Threat Modeling is technique to identify threats in your design so that you can mitigate them. Threat Modeling is a subject of his own, so I won't go in any details here (as a matter of fact there is a <a href="">book</a> on that subject). Once you have identified your threats, you can select the appropriate tasks to mitigate them.
+All of this might sound good, but now that you have all of those stories and tasks, how do you integrate them in the backlog? First easy thing you can do is to make sure that your Security Stories are publicly available to everyone in the company. They can be on a database, on your intranet, on SharePoint, whatever. The important thing is that everyone can go there and grab the stories that will make their product safer.
 
-There is still one problem, Threat Modeling is not easy and requires experience. Further more, the mappings between the threats and the tasks are not always obvious. A member of the application security team could do the threat model and select the appropriate tasks at the begining of each sprint. This is a valid option, but it does not scale for a large company.
+But how does someone know which tasks to include to the backlog? The answer to that is Threat Modeling. Threat Modeling is a technique to identify threats in your design so that you can mitigate them. Threat Modeling is a subject of its own, so I won't go in any details here (as a matter of fact there is a <a href="https://www.amazon.com/Threat-Modeling-Designing-Adam-Shostack/dp/1118809998/ref=sr_1_1?ie=UTF8&qid=1511745210&sr=8-1&keywords=threat+modeling">book</a> on that subject). Once you have identified your threats, you can select the appropriate tasks to mitigate them.
 
-This is why, where I work, we developped an internal web app. It is a questionaire-based threat model. The goal is to have 80% of the results of a complete threat model in 20% of the time. This makes it possible to teams to do their threat model at the begining of each sprint. Plus, only minimal security knowledge is required to go through the questions. In fact, the only knowledge requirement is to know what is the structure of the product. The questions look something like: Do you do authorization? Does the product or feature interacts with the Internet? Etc. When the questionnaire is filled out, the answers are analyzed, and a report is generated. This report indicates what are the proper security stories to mitigate the risks associated by the elements present in the product. For example, if the user said that they have a web UI, then the XSS story will be returned for that particular element.
+There is still one problem, Threat Modeling is not easy and requires some practice. Further more, the mappings between the threats and the tasks are not always obvious. A member of the application security team could do the threat model and select the appropriate tasks at the beginning of each sprint. This is a valid option, but it does not scale for a large company.
 
-This is still a work in progress for the company I work for, but we are getting positive feedbacks from this approach.
+This is why, where I work, we developed an internal web app. It is a questionnaire-based threat model. The goal here is to have 80% of the results of a complete threat model in 20% of the time. It is then possible for teams to do their threat model at the beginning of each sprint. Plus, only minimal security knowledge is required to go through the questions. In fact, the only knowledge requirement is to know what is the structure of the product being threat modeled. The questions look something like: Do you do authorization? Does the product or feature interacts with the Internet? Etc. Once the questionnaire is filled out, the answers are analyzed, and a report is generated. This report indicates what are the proper security stories to mitigate the potential threats associated to the elements present in the product. For example, if the user said that they have a web UI, then the XSS story will be returned for that particular element.
 
-The important thing to remember from this post is that with DevOps, we need to think about DevSecOps as well. Hopefuly, Security Stories are part of the solution to integrate security in the SDLC.
+This is still a work in progress for the company I work for, but we are getting positive feedback from this approach.
+
+The important thing to remember from this post is that with DevOps, we need to think about DevSecOps as well. Hopefully, Security Stories are part of the solution to integrate security in the SDLC.
