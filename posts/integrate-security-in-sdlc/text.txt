@@ -28,7 +28,7 @@ At work, we started to use Security Stories on a few projects for the last month
 
 First, instead of assigning a task to a specific role, we associate it to a type (i.e. Architecture, Implementation, Verification). We did that because more often than not, a particular person can take more than one role. We found it easier to know when to do a task that way. For example, unit testing is part of the verification phase, but should it be given to a developer or to a QA? It depends on the team or on the organization. We wanted to abstract ourselves from that kind of detail.
 
-Second, one of the most recurrent feedback that we got from the developers is that the Security Stories proposed by SAFECode are to vague. For example, here is a task to help you protect your application against CSRF; "Use one of the many available libraries and frameworks that takes CSRF into account.". That is not very useful. Therefore, we took those stories and added:
+Second, one of the most recurrent feedback that we got from the developers is that the Security Stories proposed by SAFECode are too vague. For example, here is a task to help you protect your application against CSRF; "Use one of the many available libraries and frameworks that takes CSRF into account.". That is not very useful. Therefore, we took those stories and added:
 
 <ul>
 <li>
