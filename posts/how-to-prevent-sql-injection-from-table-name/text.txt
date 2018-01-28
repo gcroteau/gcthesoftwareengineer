@@ -1,0 +1,31 @@
+How To: Mitigate SQL Injection from Untrusted Table Name
+--------------------------------------------------------
+
+Multiple techniques exist to mitigate SQL injection: use a white list, parameterization, etc. OWASP has a complete prevention cheat sheet <a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet">here</a>.
+
+However, this cheat sheet covers cases where the untrusted input goes in a WHERE statement. What would be the best approach if the untrusted input is the table name? Take this query for example:
+
+Query #1: The query with the untrusted input.
+<code>
+    SELECT * FROM untrusted_table_name; 
+</code>
+
+Since you can't use parameterization here, you have to do a string concatenation of the query and the untrusted input. If you are able to build a list of acceptable entry, you should compare the input to a white list. Better yet, you could re-design the application so that it doesn't have to accept a table name as an input. But if you can't do those two things, what should you do? 
+
+You could try to compare the input to a regex, but it would be like blacklisting the input. There will never be a 100% guarantee that you are protected against SQL injection. For example, does the regex take into account UNION based injection? How reliable is it? What if you have a genuine table name that contains the word UNION? It is not an optimal solution, and it is prone to let some attacks go through.
+
+One solution is to leverage the features of your DBMS in order to parameterize the untrusted table name. Most, if not all, DBMS have a way to find a table by looking for its name. For example, with SQLite, you can do the following query:
+
+Query #2: The query to verify the existence of a table.
+<code>
+    select * FROM sqlite_master WHERE type='table' AND name=untrusted_table_name;
+</code>
+
+This query will return all the tables with the specified name. This query is parameterizable and you must use this technique to protect it against injections. If the above query returns a table, it means that the untrusted input is safe to concatenate in query #1. However, if it returns nothing, the untrusted input might be malicious. It could also mean that the program received a table name that does not exist. In either case, it indicates that query #1 should not be executed.
+
+By doing this additional query, you can properly mitigate the potential SQL injection in query #1.
+
+This technique can be used with most DBMS. You just have to modify query #2 to work with your DBMS.
+
+Tag: SQL Injection
+Category: Application Security
