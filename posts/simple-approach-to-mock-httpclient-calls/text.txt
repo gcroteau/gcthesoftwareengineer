@@ -1,0 +1,115 @@
+A Simple Approach to Mock HttpClient Calls
+------------------------------------------
+
+The current recommended approach to do HTTP calls using C# is to use <i>HttpClient</i>. This class is disposable, meaning that it should be used inside a <i>using</i> statement. For example, like in this class:
+
+<code>
+public class MyClass
+{
+    public MyClass()
+    {
+        
+    }
+
+    public void MyMethod()
+    {
+        using (var httpClient = new HttpClient());
+        {
+            HttpResponseMessage response = httpClient.GetAsync("https://aurl.com/").Result;
+        }
+    }
+}
+</code>
+
+This ensures that the <i>HttpClient</i> instance is properly disposed by the garbage collector once we are done with it.
+
+However, a problem arise when the time comes to unit test <i>MyMethod</i>. With the current implementation, it is impossible to mock the HTTP request. This means that the unit test would end up doing a real HTTP call, therefore making it not a unit test at all!
+
+The usual approach when it comes to mocking is to inject the dependency, instead of creating it inside the class. However, <i>HttpClient</i> is almost impossible to mock out of the box. This is because it does not implement any interfaces, nor does it have virtual methods. One way to circumvent this problem is to create a wrapper class around <i>HttpClient</i>. That wrapper would parrot back the <i>HttpClient</i> methods that needs to be mocked, but the wrapper's methods would be virtual. Then, you inject the wrapper into <i>MyClass</i>.
+
+This approach has a few draw backs. First, you need to create and maintain a wrapper, which in the end is unnecessary additional code. Second, since you inject the wrapper, it will probably become an internal attribute of <i>MyClass</i>. By doing so, you need to make sure that you properly dispose of the underlying <i>HttpClient</i>.
+
+A simpler approach does not involve wrappers at all. Moreover, it allows to keep the <i>using</i> statement above. The trick is, instead of trying to inject a <i>HttpClient</i>, we inject a <i>HttpClientHandler</i>, and pass the handler to the <i>HttpClient</i> constructor. When it comes the time to unit test <i>MyClass</i>, we inject a <i>FakeHttpClientHandler</i>. This fake handler extends <i>HttpClientHandler</i>, but it overrides the <i>SendAsync</i> method. By using this fake handler, it is possible to mock HTTP responses, capture the request messages for assertions, etc. Here is a complete example. 
+
+First, we inject <i>HttpClientHandler</i> as a dependency to <i>MyClass</i>.
+
+<code>
+public class MyClass
+{
+    private HttpClientHandler _handler;
+
+    public MyClass(HttpClientHandler handler)
+    {
+        _handler = handler;
+    }
+
+    public void MyMethod()
+    {
+        using (var httpClient = new HttpClient(_handler, false)); // false means that the handler won't be disposed during HttpClient's dispose
+        {
+            HttpResponseMessage response = httpClient.GetAsync("https://aurl.com/").Result;
+        }   
+    }
+}
+</code>
+
+One important note. If you intend to re-use the handler, like it is the case in this example, make sure to specify that the handler should not be disposed during the dispose of the <i>HttpClient</i>.
+
+Now, in the test project, we create the <i>FakeHttpClientHandler</i> class. It looks like this: 
+
+<code>
+public class FakeHttpClientHandler : HttpClientHandler
+{
+    public virtual HttpResponseMessage Send(HttpRequestMessage request)
+    {
+        throw new System.NotImplementedException("Meant for mocking purposes.");
+    }
+
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult(Send(request));
+    }
+}
+</code>
+
+By overriding the <i>SendAsync</i> method as above, any HTTP calls that go through the <i>HttpClient</i> can be mocked using the <i>Send</i> method.
+
+Here is a simple code sample that shows how it is then possible to mock HTTP calls using the <i>FakeHttpClientHandler</i> for unit testing <i>MyClass</i>. The test bellow uses NUnit and moq.
+
+<code>
+[TestFixture]
+class MyClassTest
+{
+    private MyClass _myClass;
+
+    private Mock<FakeHttpClientHandler> _handler;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _handler = new Mock<FakeHttpClientHandler>() { CallBase = true };
+
+        _myClass = new MyClass(_handler.Object);
+    }
+
+    [Test]
+    public void GivenASituation_WhenDoingSomething_ThenThisHappens()
+    {
+        // Given
+        _handler.Setup(h => h.Send(It.IsAny<HttpRequestMessage>())).Returns(new HttpResponseMessage()); // Insert the response you want
+
+        // When
+        _myClass.MyMethod();
+
+        // Then
+        // Assert something
+    }
+}
+</code>
+
+One last important detail. It is mandatory that <i>CallBase = true</i> is set when creating <i>FakeHttpClientHandler</i>'s mock. The reason for that is that we want <i>SendAsync</i> to be called during our tests. By doing so, our mocked method will be executed. If the <i>CallBase</i> attribute is not set, the moq framework will return a default value for the <i>SendAsync</i> method.
+
+Thanks for reading. If you have another alternative regarding mocking <i>HttpClient</i> calls, please share it in the comments!
+
+Category: Unit Testing
+Tags: .NET, C#, Mock, NUnit, moq, HTTP

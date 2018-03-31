@@ -79,3 +79,7 @@ public class MyClassTest {
 There you go!
 
 You can find PowerMock on Github here: https://github.com/jayway/powermock.
+
+
+Category: Unit Testing
+Tags: Java, Mock, JUnit, Mockito, PowerMock
