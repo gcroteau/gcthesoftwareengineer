@@ -1,0 +1,15 @@
+OSCP (Offensive Security Certified Professional) is one of the best known certification in pen testing. This is also one of the most, or the most challenging one as well. As it turns out, I gave it a try (spoiler alert, I did not succeed) and I am writing this to share my experience. Even though I didn't pass the exam, I am pretty sure that this can help some people in their exam preparation. It can also help people better know if they are ready or not for the challenge. In any case, let's jump in!
+
+To tell the truth, I never intended to do the OSCP certification. A previous colleague of mine tried it and I saw first hand what to expect. I wasn't sure that all this work was worth it, plus the exam seemed ridiculous (we'll get back on that). Turns out, at the end of NorthSec's CTF (https://nsec.io/), I won an OSCP exam plus 30 days of lab access during a price draw. At that point, I figured that I might just try it. Worst case scenario, I will still learn new things.
+
+I started out where probably most do: Google. I read a bunch of blog post about people that did the OSCP exam. I read about people that both succeeded and failed, since both perspective give different insights. Here are a few of the ones that I went back to more than once:
+
+[insert blog posts here]
+
+
+
+Now comes the day of the exam.
+
+- What I could have done differently to pass the exam
+- Material sources
+- Conclusion: will I try that again? Do I think this is worth it?
