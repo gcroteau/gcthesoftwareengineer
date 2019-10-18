@@ -6,10 +6,19 @@ I started out where probably most do: Google. I read a bunch of blog post about 
 
 [insert blog posts here]
 
+With that completed I knew a bit more what to expect and how much I would need to prepare for the exam. I figured that if I give myself 6 months, plus the 30 days of lab access, that ought to do it. That time of preparation can be different for other people, depending on your current knowledge, your life situation, etc. For me, I knew I would not be able to spend much more than 10 hours a week on my study. That is except the last 30 days, where I wanted to take the most of the lab access.
 
+Then, I had to come up with a basic plan to prepare. I read the OSCP's student and exam guides. This gave me an idea of the areas I had to focus on first. At first hand, I knew that I was lacking some theorical knowledge before I could jump in practical exercises. For the first few weeks, I've read quite a lot of books and online trainings (please see the end of this post for all the material sources).
+
+After going through all that base material, I started to get my hands dirty. Of course, whenever I come across a challenge or a subject that I was not comfortable with, I would take the time to search and learn about it. I focussed my practical studies on 2 major sources: vulnerable by design VMs that I would download locally and Hack the Box.
+
+==
 
 Now comes the day of the exam.
 
+- Important, on hackthebox, focus on the machines that are not CTF-like. They can help you understand stuff, but they might not be the best fit for OSCP
+
 - What I could have done differently to pass the exam
+    - More lab access time (less in a rush and more time to try things out)
 - Material sources
 - Conclusion: will I try that again? Do I think this is worth it?
