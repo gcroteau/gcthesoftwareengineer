@@ -1,3 +1,5 @@
+Title: 
+
 OSCP (Offensive Security Certified Professional) is one of the best known certification in pen testing. This is also one of the most, or the most challenging one as well. As it turns out, I gave it a try (spoiler alert, I did not succeed) and I am writing this to share my experience. Even though I didn't pass the exam, I am pretty sure that this can help some people in their exam preparation. It can also help people better know if they are ready or not for the challenge. In any case, let's jump in!
 
 To tell the truth, I never intended to do the OSCP certification. A previous colleague of mine tried it and I saw first hand what to expect. I wasn't sure that all this work was worth it, plus the exam seemed ridiculous (we'll get back on that). Turns out, at the end of NorthSec's CTF (https://nsec.io/), I won an OSCP exam plus 30 days of lab access during a price draw. At that point, I figured that I might just try it. Worst case scenario, I will still learn new things.
@@ -6,18 +8,30 @@ I started out where probably most do: Google. I read a bunch of blog post about 
 
 [insert blog posts here]
 
-With that completed I knew a bit more what to expect and how much I would need to prepare for the exam. I figured that if I give myself 6 months, plus the 30 days of lab access, that ought to do it. That time of preparation can be different for other people, depending on your current knowledge, your life situation, etc. For me, I knew I would not be able to spend much more than 10 hours a week on my study. That is except the last 30 days, where I wanted to take the most of the lab access.
+With that completed I knew a bit more what to expect and how much I would need to prepare for the exam. I figured that if I give myself 6-8 months, plus the 30 days of lab access, that ought to do it. That time of preparation can be different for other people, depending on your current knowledge, your life situation, etc. For me, I knew I would not be able to spend much more than 10 hours a week on my study. That is except the last 30 days, where I wanted to take the most of the lab access.
 
 Then, I had to come up with a basic plan to prepare. I read the OSCP's student and exam guides. This gave me an idea of the areas I had to focus on first. At first hand, I knew that I was lacking some theorical knowledge before I could jump in practical exercises. For the first few weeks, I've read quite a lot of books and online trainings (please see the end of this post for all the material sources).
 
-After going through all that base material, I started to get my hands dirty. Of course, whenever I come across a challenge or a subject that I was not comfortable with, I would take the time to search and learn about it. I focussed my practical studies on 2 major sources: vulnerable by design VMs that I would download locally and Hack the Box.
+After going through all that base material, which took me a few months, I started to get my hands dirty. Of course, whenever I came across a challenge or a subject that I was not comfortable with, I would take the time to search and learn about it. I focussed my practical studies on 2 major sources: vulnerable by design VMs that I would download locally and Hack the Box. Again, see the end of this post for all the references.
+
+One important tip that I can give you regarding Hack the Box, or any other similar apporach, is to focus on the machines that are rated to be close to reality comporared to the CTF-like ones. Don't get me wrong, you can learn a lot by powning CTF-like machines. Although, you will better spend your time priorizing the close to real life machines, since those are the ones that represents best what you will encounter during OSCP lab and exam.
+
+The practical aspect of the preparation was essential. I do not regret spending time reading books, since it brought me some critical knowledge. Especially for things that you don't know that you don't know. However, OSCP is a hands-on exam. Therefore I knew I had to focus most of my time on actual hacking. With about 3 months to go before having access to the OSCP labs, I was spending about 15 hours per week on that preparation.
+
+Now comes the time for the lab, or so I tought. Since the lab environment is shared with other students, in order for them to not impact each other, the number of participant accessing the lab is limited for a given period of time. That makes sense, but I didn't know that (and if it was written in OSCP's exam or lab guide I missed that information). That means that you can't have acess to the labs whenever you want, you have to pick a time period. As it turns out, the period I wanted to do the lab was already taken. In the end, I got access to the labs about 30 days later then I had planned. I guess it goes without saying that it screewed some of my plans, both professionnal and personnal. In any case, I didn't have any choice, and I used the extra 30 days or so to continue to study on my own.
+
+After about four weeks, I finally started the OSCP lab. Since I have only 30 days of lab access, I decided to spend around 15-20 hours per week on my OSCP training. Honestly, I felt that I would have needed to do more than that, but with a full-time job, a house, etc., it was hard to do more than that and still get a good night of sleep.
+
+The first steps into the lab went smoothly for me. After spending an hour or two to enumerate the basic potential entry points on most of the first machines (there were about 20 of them), I started to focus on one or the other. I was able to gain root access on around 5 machines with ease and another 5 without much trouble. 
+
+TODO: 2-3 with troubles
+TODO: only had time to scrtach the surface of the second layer of the lab
 
 ==
 
 Now comes the day of the exam.
 
-- Important, on hackthebox, focus on the machines that are not CTF-like. They can help you understand stuff, but they might not be the best fit for OSCP
-
+- One thing that is important for OSCP is buffer overflows shells
 - What I could have done differently to pass the exam
     - More lab access time (less in a rush and more time to try things out)
 - Material sources
