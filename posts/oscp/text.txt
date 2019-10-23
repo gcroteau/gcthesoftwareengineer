@@ -26,15 +26,17 @@ The first steps into the lab went smoothly for me. After spending an hour or two
 
 The time has come for the exam. I wake up on Thursday morning, knowing fully that I might not go back to bed before Friday morning if things do not go smoothly. Since this is a (crazy) non-stop 24 hours exam, I made sure to make my experience as smooth as possible; all the meals were ready in advance, lots of coffee waiting for me, etc. As for how I would spend my time, my strategy was, and I stuck to it, to do 2-4 hours of exam, followed by a 15-45 minutes break, depedending on what time it is. I logged in to the OSCP exam portal, downloaded the necessary VPN config, did the initial verification with the proctor, and off we go.
 
-As usual, I started with enumeration, for at least an hour. I was able to gain root access on one of the machines without too much of a challenge. I didn't know that at that point, but that would be only one. What is funny though, is that this machine was worth 20 points in the exam. For the life of me, I never was able to complete the "easiest" machine that is worth 10 points. Before diner time, I was able to gain user access on another machine. Then again, that would be the only other machine I would reach that access. At around 10 in the evening, I realized that if I wanted to have any chance to pass the exam, I would have to do the full 24 hours without sleeping. I grabbed my emergency Redbull and went on. Unfortunately, that was not enough. About an hour and a half before the end of the exam and still 2 or 3 machines short for having the passing grade, I threw the towel. As I went to bed on Friday morning, my wife was waking up to go to work.
+As usual, I started with enumeration, for at least an hour. I was able to gain root access on one of the machines without too much of a challenge. I didn't know that at that point, but that would be only one. What is funny though, is that this machine was worth 20 points in the exam. For the life of me, I never was able to complete the "easiest" machine that is worth 10 points. Before diner time, I was able to gain user access on another machine. Then again, that would be the only other machine I would reach that access. One thing that I was not prepared for, even by doing the labs, is the quantity of rabbit holes (i.e. false hopes of entry points) on the exam machines. I am sure I wasted too much time on things that were not exploitable. At around 10 in the evening, I realized that if I wanted to have any chance to pass the exam, I would have to do the full 24 hours without sleeping. I grabbed my emergency Redbull and went on. Unfortunately, that was not enough. About an hour and a half before the end of the exam and still 2 or 3 machines short for having the passing grade, I threw the towel. As I went to bed on Friday morning, my wife was waking up to go to work.
 
-==
+I was disapointed that I didn't pass the exam, but at the same time, I was happy to move on. I don't feel like I wasted my time since I learned a lot while studying for that exam and that knowledge will never be lost. Looking back, I asked myself what I could have done to pass the exam. For one thing, 30 days of lab access was not enough for me. On the other hand, I could not take a lab extension. If you plan to do the exam, I suggest that you take at least 60 days of lab access. Especially if you have other priorities in your life. It also give you plenty of time to try things out, and even to try other approaches on machines that you already powned. Another thing is that I should have waited before enrolling for the exam. I did had control over that in my case, since I had 1 year to use my voucher for the exam. In any case, I did not have enough experience to tackle this challenge properly.
+
+That being said, I don't see myself trying OSCP again. I understand that the 24 hours time frame for the exam is to demonstrate that the candidate is able to manage his time and such. But that is ridiculous in my opinion. I don't see the point, espacially with all those research that shows that the average person can't keep focus even on a regular 8 hour work day. Does that mean that I think this certification doesn't mean anything? Of course not. Anybody that gets this certification is sure to have a great career path. But this is definitely not the only way. In my opinion, you can achieve more or less the same result by doing side projects a few hours per week (or even per month) and maybe some more reasonable certifications. Now, if you are reading this and plan to do OSCP, you are in for a ride (6).
 
 
-- Password guessing is a PITA and does not prove anything regarding skills.
-- Why did I not take a lab extension?
-- One thing that is important for OSCP is buffer overflows shells
-- What I could have done differently to pass the exam
-    - More lab access time (less in a rush and more time to try things out)
-- Material sources
-- Conclusion: will I try that again? Do I think this is worth it?
+As promised, here are some of the material that I used to prepare for the exam:
+
+[insert resources here]
+Books:
+- Penetration Testing: A Hands-On Introduction to Hacking
+- Hacking: The Art of Exploitation (pro tip: do not underestimate the importance of bufferoverflows exploitation)
+- Red Team Field Manual
