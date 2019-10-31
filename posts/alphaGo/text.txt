@@ -1,8 +1,0 @@
-Beating the Game of Go
-----------------------
-
-Well, there it is, it was just a matter of time, Google may have been able to create a program that masters the game of Go. The program, called AlphaGo, will try to replicate the triumph of Deep Blue, the first computer program that defeated the world master of chess, Garry Kasparov. AlphaGo will face the undisputed champion of the game of Go of the past decade, Lee Sedol, on March 9th-15th in Seoul.
-
-If it were to defeat the champion, it will succeed where every other programs have failed. It will also mean that it has mastered one, if not the last game that humans were better than computers.
-
-You want to know more? Go see Google’s announcement: http://deepmind.com/alpha-go.html
