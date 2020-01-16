@@ -1,0 +1,74 @@
+Title: Laptop Scavenging Part I - Taking it Apart
+Category: Personal Projects 
+Tags: DIY, Hardware
+
+When I started to learn programming in college, I bought a laptop. A solid one at that time I must add. This was an ASUS G50V. Not only was I not reliant on my parent's PC anymore, I could game on it too!
+
+Fast forward a few years, I am at University and that laptop starts to give me some trouble. No worries, this will become my CTF machine. Install Kali Linux on that and voilà!, a very power hacking machine.
+
+Last year, during a CTF, it started to get very slow and unriliable. This is when I decided to completely uncomission this laptop. But I was thinking, there might still have some life in that thing. As it turns out, there is!
+
+This will be a series of blog posts regarding how I continue to extract value out of this laptop by scavenging useful parts and making (mostly) useful things out of them. There will be at least 2 parts, maybe more.
+
+First things first, let's take apart that laptop to extract reusable parts!
+
+I started by removing the back plate. To have access to all the screws, I needed to remove the battery. With the back plate out of the way. It was easy to extract the hard drive and the memory.
+
+[images 1 and 2]
+
+You will notice that I am not using proper "electronic tools" to do that. I got some more appropriate tools now. But if anything, it shows that you can do this with pretty much just a screwdriver and something to pry.
+
+Removing a few more screws from the back, the CD reader came out. Another thing that I am going to keep, just in case.
+
+[image 3]
+
+To go further, I tried to pry it open. However, looking at how things were held together, I guessed that there were some screws underneath the screen that was holding the top and the back together. I started to remove the screen. Most of the screws here were hidden being small pieces of rubber.
+
+[image 4]
+
+[images 5 and 6]
+
+Once those were of, the screen's front plate came off. 
+
+[image 7]
+
+Taking a few more screws off of the screen frame, and I got access to the connector. After carefully disconnecting it and the power as well, I was able to scavenge the screen.
+
+[images 8-9-10]
+
+From the screen's back plate, I retrieved the microphones and the webcam.
+
+[images 11-12]
+
+Sure enough, with the screen gone, I found the final screws that were holding everything together. Or so I thought.
+
+[images 13-14]
+
+Everything was still holding up somehow. Removing the keyboard finally revealed the last screws. After removing them, I finally got access to the motherboard.
+
+[image 15]
+
+I extracted the CPU and the GPU. I am not sure I will ever use them, but you never know. As you can see, the thermal paste was not providing a good contact for heat transfer anymore.
+
+[images 16-17-18]
+
+Finally, I was able to extract potentially more useful stuff; the WiFi antenna, the performance display panel and the speakers.
+
+[images 19-20-21]
+
+And that was it. The rest ended up to an electronic recycle location. To summaries, I scavenged:
+
+- 2 x 2GB of DDR2 RAM 
+- A 320 GB hard drive
+- A disk reader
+- A CPU
+- A GPU
+- A screen
+- A keyboard
+- A webcam
+- A WiFi antenna
+- Microphones
+- A display panel
+- Speakers
+
+Some of those will probably never be reused. That being said, I have a few ideas to give a second life to some of those. In part II of this series, we will see how I converted the bare screen of this laptop to a fully functional and portable monitor that I can bring to CTF competitions!
