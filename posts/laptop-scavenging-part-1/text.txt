@@ -4,9 +4,9 @@ Tags: DIY, Hardware
 
 When I started to learn programming in college, I bought a laptop. A solid one at that time I must add. This was an ASUS G50V. Not only was I not reliant on my parent's PC anymore, I could game on it too!
 
-Fast forward a few years, I am at University and that laptop starts to give me some trouble. No worries, this will become my CTF machine. Install Kali Linux on that and voilà!, a very power hacking machine.
+Fast forward a few years, I am at University and that laptop starts to give me some trouble. No worries, this will become my CTF machine. Install Kali Linux on that and voilà!, a very powerful hacking machine.
 
-Last year, during a CTF, it started to get very slow and unriliable. This is when I decided to completely uncomission this laptop. But I was thinking, there might still have some life in that thing. As it turns out, there is!
+Last year, during a CTF, it started to get very slow and unreliable. This is when I decided to completely decommission this laptop. But I was thinking, there might still have some life in that thing. As it turns out, there is!
 
 This will be a series of blog posts regarding how I continue to extract value out of this laptop by scavenging useful parts and making (mostly) useful things out of them. There will be at least 2 parts, maybe more.
 
@@ -28,7 +28,7 @@ To go further, I tried to pry it open. However, looking at how things were held 
 
 [images 5 and 6]
 
-Once those were of, the screen's front plate came off. 
+Once those were off, the screen's front plate came off. 
 
 [image 7]
 
@@ -63,7 +63,7 @@ And that was it. The rest ended up to an electronic recycle location. To summari
 - A disk reader
 - A CPU
 - A GPU
-- A screen
+- A screen panel
 - A keyboard
 - A webcam
 - A WiFi antenna
@@ -71,6 +71,6 @@ And that was it. The rest ended up to an electronic recycle location. To summari
 - A display panel
 - Speakers
 
-Some of those will probably never be reused. That being said, I have a few ideas to give a second life to some of those. In part II of this series, we will see how I converted the bare screen of this laptop to a fully functional and portable monitor that I can bring to CTF competitions!
+Some of those will probably never be reused. That being said, I have a few ideas to give a second life to some of those. In part II of this series, we will see how I converted the bare screen panel of this laptop to a fully functional and portable monitor that I can bring to CTF competitions!
 
 - Part II - Building a Monitor (link to part 2)
