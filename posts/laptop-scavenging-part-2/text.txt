@@ -1,1 +1,61 @@
-TODO: add link to part 2 in part 1
+Title: Laptop Scavenging Part II - Building a Monitor
+Category: Personal Projects
+Tags: DIY, Hardware
+
+Last time in [Part I](link to part I), I showed what I was able to scavenge from an old laptop. Among those things that I extracted was the screen panel. The idea is to transform it into a standalone monitor.
+
+The first thing that I needed was a screen panel controller for the screen panel model that I have. I was able to find one on eBay for about 20 USD. I made sure that it worked before going forward with the rest of the project. To make the casing of the monitor, I went with 1/8" MDF. It is easy to work with and will be sturdy enough for that purpose. I also got a pair of cabinet hinges for making the supporting legs, PCB standoffs and a can of spray paint.
+
+During this project, I used two types of glue. When gluing the wood to the metal of the screen panel, I used Gorilla glue (some kind of very strong glue) otherwise I used wood glue.
+
+Here is the starting point; the screen panel, the sheet of MDF and lots of motivation to make it work.
+
+[ls-p2-1]
+
+Because of where the connectors are on the panel, I didn't find a better way to install the controller other than passing the cables under the casing. To do so, I needed to create some kind of space behind the panel in order to do some cable management. For the sides of the monitor, I decided to leverage the screw holes on the panel. That would help make the monitor more sturdy. It was hard to drill holes that were perfectly aligned. My first attempt was not a success.
+
+[ls-p2-2, ls-p2-3]
+
+In the end, I decided to use only 2 screws instead of 4, simply because it was easier. I would be gluing those pieces as well anyway. With those 2 pieces completed, I also cut the top side, which would complete the casing.
+
+With the sides done, I then cut the back plate of the monitor. This is where the controller will be screwed on. I kept an extra length at the bottom to elevate the monitor. It will also make it easier to install the legs later. You'll also notice that the cuts in the wood are not perfectly straight. This is because I still don't have a saw bench. I've been using a jigsaw and a sander to make a perfect line. I know, it is a long process, but I was not in the business of buying a bench saw anyway.
+
+[ls-p2-4, ls-p2-5]
+
+One thing that was hard to show is that I added pieces of wood on the back of the screen panel. Those pieces of wood will be glued to the back side. Those were added at the bottom of the panel in order to add support. To complete the base of the monitor, I cut 4 rectangular pieces that I would glue together. This will also give some weight for stability. Notice that I had to cut a cavity in order to be able to pass the power cable through the back.
+
+[ls-p2-6,ls-p2-7,ls-p2-8,ls-p2-15]
+
+Up to that point, I still didn't glue anything. The reason for that is that I still need to cut through the backplate for cable management. I placed the PCBs on the backplate as I wanted them to be and drew where the holes should be. I made sure that the cables would be long enough for that setup to work. I then cut the holes and did a dry fit with the PCBs screwed and the cables going through the holes. I wanted to make sure that everything was working fine before gluing things together.
+
+Once this was done, it was time to paint the backplate. The novice in me did not think that a coat of primer would be necessary. Obviously I was wrong. It took 4 coats of paint to have a decent result.
+
+[ls-p2-9,ls-p2-10,ls-p2-11]
+
+After the paint dried up, I installed the PCBs using the holes that I previously cut. I used PCB screws and PCB standoffs that I bought on Amazon. This made sure that the electronic components were not directly against the wood. With the cables being hidden, I find the result is pretty satisfying.
+
+[ls-p2-12,ls-p2-13,ls-p2-14]
+
+With everything connected, I did a power up test. When I saw this was successful, I went ahead to seal everything. First I screwed and glued the sides to the screen panel, including the top piece. Then I glued it all to the back panel. Again, once dry, I glued the 4 pieces of the base, using clamps.
+
+[ls-p2-16]
+
+The screen needs legs in order to stand on its own. I made 2 using MDF. I also made a rectangular piece of MDF. This one will cover the electric components to add a bit of protection. With those 2 final pieces cutout, I masked the screen and started to paint everything. The end result is not too bad, considering that I should have used a primer.
+
+[ls-p2-17,ls-p2-18]
+
+With the components cover completed, it was time to fix it on the back.
+
+[ls-p2-19,ls-p2-20]
+
+Finally, the last piece of the puzzle, the supporting legs. I glued the MDF pieces to the cabinet hinges. I then screwed the hinges at the back of the monitor. Since those hinges are made to open all the way, the monitor would slide flat if left as-is. I screwed 1 stripe of rubber for each leg. I used old bike tires for that purpose. With that, the legs can't open all the way, ensuring that the monitor won't fall flat.
+
+[ls-p2-21,ls-p2-22]
+
+Now is the time to test that all that was not for nothing. I grabbed a Raspberry Pie, connected it and success! We have a fully functioning monitor made from a laptop screen panel!
+
+[ls-p2-23,ls-p2-24]
+
+With perspective, there are a few things that I would have done differently. The monitor could have looked better if I had pre-coated it with a primer. I would have also designed it in a way to have the supporting legs screwed closer to the center of gravity of the monitor for better stability. The last thing that I would have done differently is to use more clamps when gluing the bottom of the screen. The end result would have been more sharp.
+
+That being said, I am pretty happy with the end result. This is something that I can easily bring to CTFs as a second monitor. This is also something that I can use at my home workshop, my home gym and probably other places that I haven't thought about.
