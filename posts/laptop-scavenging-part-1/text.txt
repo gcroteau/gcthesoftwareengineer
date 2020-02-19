@@ -72,3 +72,5 @@ And that was it. The rest ended up to an electronic recycle location. To summari
 - Speakers
 
 Some of those will probably never be reused. That being said, I have a few ideas to give a second life to some of those. In part II of this series, we will see how I converted the bare screen of this laptop to a fully functional and portable monitor that I can bring to CTF competitions!
+
+- Part II - Building a Monitor (link to part 2)
