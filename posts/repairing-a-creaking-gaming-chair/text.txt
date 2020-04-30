@@ -1,0 +1,33 @@
+Title: Fixing a Creaking Gaming Chair
+Category: -TBD-
+Tags: DIY
+
+I have been the owner of a GT Omega Racing gaming chair for about a year now. It is a great value gaming chair. However, quite recently it started to make a creaking noise at the base. I was able to fix that issue by cleaning and re-greasing the bottom bearings. I am pretty sure this fix could work for a large range of gaming chair as well. Here is how I've done it.
+
+[rcgc-1]
+
+First, let's put the chair upside down.
+
+[rcgc-2]
+
+The "thing" that holds everything in place is this metal piece at the very middle. It can easily be removed by lifting it from the middle using a pair of pliers. Once this was done, I removed the washer.
+
+[rcgc-3, rcgc-4, rcgc-5]
+
+With that out of the way, the whole base could be removed, exposing the shaft and the bearings. I removed the bearings and the 2 washers. Now to start the cleaning. I used WD-40 to remove the existing grease from the shaft and the removed pieces. The pictures where pretty handy to make sure that I put everything back in the correct order.
+
+[rcgc-6, rcgc-7]
+
+For the grease, I already had bike grease handy, but you can use any other type of grease that can work.
+
+[rcgc-8]
+
+I greased the shaft first, then put the pieces back on it after greasing them.
+
+[rcgc-9, rcgc-10]
+
+Now we put back everything together, putting back the base, the washer and the "metal thing" from the start and we are done!
+
+[rcgc-11, rcgc-3]
+
+So far this fixed my issue, no more creaking!
