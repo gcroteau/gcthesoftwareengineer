@@ -1,0 +1,36 @@
+Title: Pushing your AppSec Knowledge Further
+Category: Application Security
+Tags: Learning
+
+One recurrent question that I continuously get is "how do I get started in security/application security?". The truth is, at the moment, there is no clear path for someone looking to start in this field. There is no college or university degree (yet, altough you might have access to some courses). Plus, the learning curve can be daunting, especially if you do not know where to start. If this is your case, this post is for you. If you are not new to the field and you want to push your knowledge further, this post can be relevant for you as well.
+
+Here are different resources, depending on what medium you are looking for.
+
+## Hands-on
+
+[Web Security Academy](https://portswigger.net/web-security): Labs that help you understand security vulnerabilities.
+[RingZer0](https://ringzer0ctf.com): A CTF platform with challenges ranging from easy to hard.
+[Hackerone's CTF](https://www.hackerone.com): Hackerone is known for its bug bounty platform. However, they do also offer CTF challenges. Those challenges are based on security issues that were reported through bug bounties.
+[Hack the Box](https://www.hackthebox.eu): Hack the Box offers boxes where you have to get user and admin control of the machine. The platform also offers different challenges.
+[VulnHub](https://www.vulnhub.com): Here you can download VM images that are vulnerable by default. The goal is to take over admin control of the VM.
+
+## Reading
+
+[Penetration Testing: A Hands-On Introduction to Hacking](https://www.amazon.com/Penetration-Testing-Hands-Introduction-Hacking/dp/1593275641): An  excellent book to get started.
+[The Web Application Hacker's Handbook](https://www.amazon.com/Web-Application-Hackers-Handbook-Exploiting/dp/1118026470): A thorough explanation of a multitude of web application vulnerabilities.
+[Hacking: The Art of Exploitation](https://www.amazon.com/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441): This book focuses on Buffer Overflows and how to leverage them to get command execution.
+
+## Watching
+
+[Hack Yourself First](https://www.pluralsight.com/courses/hack-yourself-first): A free course on Pluralsight that is perfect for a novice.
+[IppSec's YouTube Channel](https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA): This YouTube channel provides a "write up" of all the retired machines of Hack the Box.
+[Black Hat's Youtube Channel](https://www.youtube.com/channel/UCJ6q9Ie29ajGqKApbLqfBOg): Black Hat's talks are uploaded on that channel.
+[LiveOverflow's YouTube Channel](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w): Different topics on security.
+[Nahamsec's Twitch Channel](https://www.twitch.tv/nahamsec): Nahamsec, one of Hackerone's top 10 hackers, recently (at the time of writing this) started to live stream about different hacking topics.
+
+## Listening
+
+[Risky Business Podcast](https://risky.biz): Podcast that covers the latest security news.
+[Darknet Diaries](https://darknetdiaries.com): This podcast focuses on telling stories related to hackers / hacking / etc.
+
+Hopefully this is enough to send you in the correct direction. Happy hacking!
