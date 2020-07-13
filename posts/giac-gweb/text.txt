@@ -1,0 +1,41 @@
+Title: On Becoming GIAC-GWEB Certified
+Category: Personal Projects, Application Security
+Tags: GIAC, Learning
+
+Four years ago, I became [GIAC-GWEB certified](https://www.giac.org/certified-professional/guillaume-croteau/153725). I noticed that I never blogged about this experience. Today, I remediate to that.
+
+# Why GIAC-GWEB?
+When you decide that you want to do an application security certification (or any certification for that matter) make sure that the certification provider is recognized in the field. GIAC has a well known reputation. Therefore it was an easy choice to make to go with this provider.
+
+As for why GWEB, I had multiple reasons. The first one is that it is builder-centric. In other terms, its goal is to certified that you have the necessary knowledge to develop a secure web application. To do so, you have to know and understand the potential security issues that can arise and be exploited with that kind of program.
+
+The second reason is that as a first certification, it was a good start in my opinion. Having so much to learn at that time, I could not go directely to something that is too hard, say OSCP. More over, the exam format was conventional. It was a 4 hours multiple-choice exam. Not that different from any exams that I would have gone through during university.
+
+The third and final reason was for the job. I was the guinea pig to test that certification in order to assess if it would be a good candidate for non-AppSec employee who wants to push their AppSec curriculum further.
+
+# Who is it for?
+As mentionned above, this certification is primerly focused for builders (i.e. developers). If you want to show the world that you know how to develop a secure web application, this is for you.
+
+That being said, I think this is a good certification for AppSec engineers in general (especially if you are leaning on the defense side). In order to pass the exam, you must prove that you understand the security threats that can affect a web application and how to defend against them.
+
+If you read that carefully, you'll notice that if you are looking for a certification for pure red team activities, this is not really for you. You would be better off with GIAC-GWAPT for example.
+
+# Learning Process
+At the time I did this certification, no official training was provided for it. Meaning that all I had to guide my studies was the exam objectives / blueprints. Having that in hands, I searched for relevant resources for each objectives.
+
+My usual study process is the following: when I find information that is relevant and that I should remember, I make a question whose anwser's is the information that I want to remember. When I review my notes, I make sure that I am able to answer my qestions.
+
+I have kept my notes in [this GitHub repository](https://github.com/gctse/GIAC-GWEB-Training). Please note that the content of the exam has likely changed, at least sligthly, since I did it. More over, this is not an official guide for the learning material necessary to pass the exam. Use it at your own risk.
+
+The one thing I had going for me at the time was 2 practice exams. After some weeks of study, I took the first practice exam. This was a good way for me to assess where my study was on target and where I needed to do some corrections. Please note that the most relevant practice exam is the first one. Make sure to do it after you've studied, but also not just before the real exam. Doing that you'll have some leeway to review what you failed during the practice exam.
+
+It took me roughly 100 hours to study for this exam. When I started to prepare for the exam, my AppSec knowledge was almost absent. Depending on how you study and what is your current knowledge, your milleage may vary.
+
+*Note that there is now an official course related to this certification. I haven't done it, therfore I can't comment on the subject.*
+
+# Last Thoughts
+If you are a developer who wants to understand how to build a secure web application or you are getting started in application security, this could be a good fit for you. Personnaly, I highly recommend this certification. There are no useless skills or knowledge that you have to remember for the exam and forget about it after. Most of the questions of the exam focus on making sure that you understand the concepts rather than focusing on learning stuff by heart (but it is unavoidable to have some of that). In the end, I am very happy to have completed this certification since it provided me with the kickstart that I needed to get into application security.
+
+=============
+
+TODO: update the README of the giac notes repo before posting this post
