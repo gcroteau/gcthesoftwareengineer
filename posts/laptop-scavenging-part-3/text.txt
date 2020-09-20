@@ -1,0 +1,27 @@
+Title: Laptop Scavenging Part III - Repairing a Webcam
+Category: Personal Projects
+Tags: DIY, Hardware
+
+In [Part I](https://gcthesoftwareengineer.com/2020/01/laptop-scavenging-part-i-taking-it-apart/), I showed what I was able to scavenge from an old laptop. Among those things that I extracted was the webcam PCB.
+
+During the high of the pandemic during last winter, I was not able to visit my parents. Like everybody else, we wanted to do some video calls. However, they did not have a webcam, and it was very hard to come by one at that time. Everybody was buying those to keep in touch with their relatives. I had an old webcam laying around that I could give them. The only issue though, it was not working.
+
+This is when I remember that I have a functioning webcam PCB from my scavenged laptop. I can probably make this work! Here is the original webcam.
+
+[ls-p3-1]
+
+Given the shape of the case, I was hoping that the laptop's webcam would fit in directly. After opening the case, I discovered that the same form factor was used for the original webcam. Therefore, it was just a matter of switching out the 2 boards!
+
+[ls-p3-2, ls-p3-3]
+
+However, the laptop's webcam is not exactly the same as the original one (obviously). Because of that, I had to make some adjustments. First, in order for the new board to be fixed, I had to drill a couple of holes through the back of the case. Doing so, I was able to screw the board in place.
+
+[ls-p3-4, ls-p3-5]
+
+I had one last modification to do to the case. I had to drill a new hole for the lens. Indeed, the location of the lens were not the same as the original webcam board. With that done, it was time to put the case back together. The end result is crude, but I just wanted something that works so that I could see my parents.
+
+[ls-p3-6]
+
+Speaking of working, since those type of webcam already have their USB driver installed, all you have to do to make it work is plug it in the computer!
+
+[ls-p3-7]
