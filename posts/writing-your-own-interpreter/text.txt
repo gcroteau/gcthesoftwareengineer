@@ -1,0 +1,46 @@
+Title: Writing your own Interpreter from Scratch
+Category: Book Review, Personal Projects
+Tags: Learning, GoLang
+
+I've always wanted to write my own programming language. However, I never found myself to have the time to learn all the theory necessary to take on that challenge. And then, I heard about Thorsten Ball's book: [Writing an Interpreter in Go](https://www.amazon.com/Writing-Interpreter-Go-Thorsten-Ball/dp/3982016118/ref=sr_1_1?dchild=1&keywords=interpreter+in+go&qid=1603553311&sr=8-1). I gave it a shot, and now I have a fully working (but limited) interpreter that I coded from scratch ([see it here](https://github.com/gctse/monkey-interpreter))!
+
+This book does not bore you with an insane amount of theory about programming languages. Instead, the author gives you just enough theory for every next feature that you are going to implement. In other words, this book is written so that you can build your interpreter as you progress through it. You start by defining the basic tokens of the language, move on to the lexer, followed by the parser and finishing up by the evaluator. Once this walking skeleton is in place, you'll go through it again to add things like arrays, maps, etc.
+
+To give you a better idea of what the end result looks like, here are a few lines of code that can be interpreted in Monkey.
+
+```
+>> let astring = "astring"
+>> astring + " plus"
+astring plus
+>> let afunc = fn() { return astring + " plus" }
+>> afunc()
+astring plus
+```
+
+```
+>> let a = 5
+>> let b = 10
+>> let f = fn(x, y) { if (x > 4) { return x * y } else { return x + y } }
+>> f(a,b)
+50
+>> let a = 2
+>> f(a,b)
+12
+```
+
+```
+>> let myarray = [1,2,3,4]
+>> let myhash = {"name": "bob", "age": 25, "isAdult": true }
+>> myarray[2]
+3
+>> len(myarray)
+4
+>> myhash["name"]
+bob
+>> myhash["age"]
+25
+```
+
+Even though I understood how an interpreter works in theory, now I truly understand how it works in practice. I have a better appreciation of the work that is put into creating a production-ready programming language. And let's be honest, Monkey is far from being that. Just one example of this is that out of the box (or book), loops are not supported. That being said, with all the knowledge gained during the creation of that programming language from the ground up, one could add for-loops without too much difficulty. Speaking of difficulty, this book is not meant for beginners. Don't get me wrong, the book is easy to follow and the explanations are well written. However, we are far from writing a "hello world" program (unless you want to write it in Monkey!). There is an extensive usage of recursive functions and even recursive functions calling other recursive functions. It would be easy for a beginner to get lost in all that. Moreover, if you do not know GoLang and are not used to learn a programming language quickly, you might struggle at first.
+
+With all of this said, this is a very fun and satisfying project. Plus, you have the bragging rights to say "I wrote an interpreter from scratch"! I recommend this to anyone who wants to better understand how interpreters work. And once you are done with that, you can even push it further. The author has a second book; [Writing A Compiler In Go](https://www.amazon.com/Writing-Compiler-Go-Thorsten-Ball/dp/398201610X). I might get to it at some point, but for now, I'll move on to other projects.
