@@ -1,0 +1,37 @@
+Title: Building an 8 Bit CPU from Scratch - Part I
+Category: Personal Projects, Electronics
+Tags: Hardware
+
+# Wait, Building a CPU?
+
+Some time ago, I listened to one of Scott Hanselman's podcast, [hanselminutes](https://www.hanselminutes.com/), and he was [interviewing Ben Eater](https://www.hanselminutes.com/721/building-a-cpu-from-scratch-with-ben-eater). This man was on the show because of his tutorial and project on how to build an 8 bit CPU from scratch. That definitely caught my attention. After listening to the interview, I've added this to my list of future projects to make. I recently decided to dive in and give it a try.
+
+Ben Eater has multiple tutorials for different electronic projects on his website, [https://eater.net/](https://eater.net/). There are tutorials about building a PC from scratch, a video card from scratch and a CPU from scratch, just to name a few. For all of these projects, you can buy all the necessary parts directly from the site. If you would whish to buy all of them seperately on your own, a list of necessary components is also provided. When it comes to the CPU build, there are 4 kits that you can buy seperately or together to get a small discount.
+
+(REMOVE THIS, the first image is the 4 boxes)
+[cpu-p1-1]
+
+Kit 1 is the clock module, kit 2 is for the registers and the ALU, kit 3 is for the RAM and the program counter and kit 4 is for output and control logic.
+
+The project is done on breadboards, therefore no soldering is required. As for the required tools that you will need to get on with this project, the list is pretty short:
+- Wire cutter
+- Nose plier
+- Wire stripper
+An optional but highly recommended tool is a multimeter. The CPU project page on Ben's website provides recommendations for all of those tools.
+
+The only instructions that you will get from the kits are the circuit diagrams. All of the actual tutorials and instructions are on [Ben's Youtube channel](https://www.youtube.com/user/eaterbc). Don't be fooled, a 15 minutes video can take an hour to go through. There are lots of information packed in there. And once you've understood what you have to do, why, and how it works, you have to make it yourself! This will definitely be a multi-months project for me. Meaning I wont be doing this "fulltime" from now until it is done. I'll definitely take breaks to work on other things, especially between each kit.
+
+At the end of this, I'll have a fully working 8-bit CPU that I built from the absolute ground up :D.
+
+# Building the Clock Module
+
+So, if you read attentively, you would have noticed that even the CPU clock has to be built from scratch. And this what I just completed.
+
+(REMOVE THIS, the second image is the clock module itself)
+[cpu-p1-2]
+
+As you can see, the clock module takes up an entire breadboard. This is mainly because of the fact that the clock can be used in two different modes: continuous and manual. The continuous mode is making the clock tick at a regular interval, as one would expect. It is done via the 555 timer chip on the left. The clock speed is controlled by the nob (and the capacitor, but this is all explained in great details in the videos). The manual mode is done via the second 555 timer. Each time you press the button, the clock will tick once. Finally, you have a switch and a logic circuit to decide which mode is in use. The blue LED is flashing at each clock tick, regardless of what mode the clock is in. To finish, you might notice the purple wire. This will be used later to programmatically stop the clock for debugging purposes. For now, it is connected directly to the ground. That's a very, very brief overview of what is going on here. As said earlier, thorough explanations are provided in the tutorials.
+
+This is the beginning of a long, but very exiting project. I expect to write one blog post per kit. Next time I write on this project should be about completing the registers and the ALU!
+
+TODO: clarify category and tags
