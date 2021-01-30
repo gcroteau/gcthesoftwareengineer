@@ -1,0 +1,27 @@
+Title: Building an 8 Bit CPU from Scratch - Part II
+Category: Personal Projects, Electronics
+Tags: Hardware
+
+# Building the Registers
+
+Last time in this series, we built the [clock module](LINK TO PART I). Now, we move on to building the registers. Our 8-bit CPU will have 2 registers, A and B, and an instruction register. The registers A and B will be used to store the 8-bit values that we will do arithmetic on. In other terms, those 2 will be the inputs for the Arithmetic Logic Unit (ALU). The instruction register on the other hand will be used to store the pointer to the instruction that the CPU must execute. This will be used later on in this series, but since it is built pretty much exactly as the other registers, we are building it now.
+
+## How it Works
+
+The registers have 2 important flags; load and enable. When the load flag is up, the content of the bus is loaded into the register. When the enable flag is up, the content of the register is put on the bus. Only one of those flag can be enabled at a time. The registers are connected to the clock. Meaning that they will load or push to the bus on a clock pulse. The bus, as you might know, is used to transfer data from one module to all the different modules of our CPU (register A and B, the memory, etc.).
+
+
+
+[ ] how to load and push data
+    missing the tri state thing
+[ ] how to store data
+[ ] to save space, we use a 4 bit d type registers
+[ ] to help with debugging, the output will always be on (the red leds), which is why we need the 245
+[ ] finally, the cpu will have a clear functionality, so all the registers have this in place for latter
+[ ] had to solder the leds because of space
+
+[ ] 4 most significant bits of the IR will go to the instruction decoder (latter in the series). The least significant bits are outputted on the bus, typically used to output an address to the bus
+
+# Building the ALU
+
+- We will be able to add and substract. We wont be able to do logic calculation (boolean arithmetic)
