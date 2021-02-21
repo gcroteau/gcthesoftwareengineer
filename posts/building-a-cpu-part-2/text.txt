@@ -4,24 +4,116 @@ Tags: Hardware
 
 # Building the Registers
 
-Last time in this series, we built the [clock module](LINK TO PART I). Now, we move on to building the registers. Our 8-bit CPU will have 2 registers, A and B, and an instruction register. The registers A and B will be used to store the 8-bit values that we will do arithmetic on. In other terms, those 2 will be the inputs for the Arithmetic Logic Unit (ALU). The instruction register on the other hand will be used to store the pointer to the instruction that the CPU must execute. This will be used later on in this series, but since it is built pretty much exactly as the other registers, we are building it now.
+Last time in this series, we built the [clock module](LINK TO PART I) (as a reminder, we are following [Ben Eater's project](LINK TO THE PAGE)). Now, we move on to building the registers. Our 8-bit CPU will have 2 registers, A and B, and an instruction register. The registers A and B will be used to store the 8-bit values that we will do arithmetic on. In other terms, those 2 will be the inputs for the Arithmetic Logic Unit (ALU). The instruction register on the other hand will be used to store the pointer to the instruction that the CPU must execute. This will be used later on in this series, but since it is built pretty much exactly as the other registers, we are building it now.
 
 ## How it Works
 
 The registers have 2 important flags; load and enable. When the load flag is up, the content of the bus is loaded into the register. When the enable flag is up, the content of the register is put on the bus. Only one of those flag can be enabled at a time. The registers are connected to the clock. Meaning that they will load or push to the bus on a clock pulse. The bus, as you might know, is used to transfer data from one module to all the different modules of our CPU (register A and B, the memory, etc.).
 
+In order to save space, each register is built using 2 4-bit D type register chips. Those type of registers are using D flipflops to store the data. One D flipflop stores 1 bit and there are 4 of them per D type register chip. This makes each one store 4-bit. Having 2 of them, we have a total of 8 bits.
 
+To ease troubleshooting, the output of those chips will always be on. This allows us to always see the content of each register, using LEDs. However, since those chips are always on, we don't want to connect their output directly into the bus. Otherwise, we would not be able to decide when to push to or load from bus (all the registers would be pushing all the time). To solve this issue, we add a tri-state chip between the bus and the register chips outputs. By enabling the tri-state chip, the register outputs to the bus. When enabling the load flags on the registers chips, the register loads the content of the bus.
 
-[ ] how to load and push data
-    missing the tri state thing
-[ ] how to store data
-[ ] to save space, we use a 4 bit d type registers
-[ ] to help with debugging, the output will always be on (the red leds), which is why we need the 245
-[ ] finally, the cpu will have a clear functionality, so all the registers have this in place for latter
-[ ] had to solder the leds because of space
+Finally, the whole CPU will have a clear function. This will be usefull when trouble shooting an issue and we want to put the CPU in a clean state. Therefore, everything is setup to connect the registers to the future clear function, which we will built later on.
 
-[ ] 4 most significant bits of the IR will go to the instruction decoder (latter in the series). The least significant bits are outputted on the bus, typically used to output an address to the bus
+One thing to note regarding the IR. The 4 most significant bits of that register will go to the intruction decoder (which will be built later). The least significant bits are outputted on the bus. Those will be typically used to output and address to the bus.
+
+## How it Looks so Far
+
+Here is a picture of where we are at now. We can see a register that is outping its content to the (temporary) bus. Notice that I soldered the resitors directly on the LEDs. This is not mandatory, but I did end up saving a lot of space. I decided to do that with all the LEDs moving forward.
+
+[IMAGE HERE]
+
+TODO: decide if you end that here or put the ALU in the same post
 
 # Building the ALU
 
-- We will be able to add and substract. We wont be able to do logic calculation (boolean arithmetic)
+We have two registers that can hold 8-bit of data each. Now we want to do operations on them. In our case, we want to be able to add and substract the two numbers stored in the registers. In this project, we won't be able to to boolean arithmetics with the ALU (e.g. do if/else conditions). Before we dive into putting the ALU together, it is crucial to understand how computers add and substract numbers.
+
+## How do Computers add Numbers?
+
+The concept upon which computers add numbers is exactly the same as when you add numbers manually on a sheet of paper in base 10. For example, when you do 11 + 9, you will have put a zero, have a carry of 1, add the carry to 1 and get 20. This is the same thing here for computers, just in base 2 instead of base 10. Here is a table that shows that.
+
+| Carry in | A | B | Carry out | Sum |
+|----------|---|---|-----------|-----|
+|    n/a   | 0 | 0 |     0     |  0  |
+|    n/a   | 0 | 1 |     0     |  1  |
+|    n/a   | 1 | 0 |     0     |  1  |
+|    n/a   | 1 | 1 |     1     |  0  |
+|     1    | 0 | 0 |     0     |  1  |
+|     1    | 0 | 1 |     1     |  0  |
+|     1    | 1 | 0 |     1     |  0  |
+|     1    | 1 | 1 |     1     |  1  |
+
+In this table, we are adding the bit A to the bit B. We see the sum result, as well as the carry out. We show the result when we have a carry in as well (again, think of the 11 + 9 example in base 10).
+
+Now, how do we transfer that logic on a breadboad? If you look closely, you'll notice that the first 4 lines look like a truth table for a XOR gate, and the other 4 are the exact oposite. One could build such adder using only XOR, AND, OR gates. However, in order to save some space, we will be using 2 4-bit adders chips.
+
+## How do Computers Substract Numbers?
+
+This is a bit more complicated. Ben goes into great details in his videos, therefore I highly sugest that you watch them, but here is the gist of it.
+
+First, you can't use a bit to identify if a number is positive or negative. One problem is that 0000 represents 0 in base 10 and 1000 represents -0 in base 10. Meaning that we would have 2 states for 0. Here is another example of why it does not work:
+
+- We are using 4-bits numbers
+- 0101 = 5
+- 1101 = -5
+- 0101 + 1101 = 10010
+- 0010 != 0 (it equals 2, which is flawed)
+
+### Ones Complement
+
+The first concept to introduce to represent negative numbers in binary is the ones complement. Here, we simply flip all the bits. For example, 1000 = -7, 0111 = 7. However, we still have 2 states for 0 (1111 = -0). Let's take our example above again.
+
+- 0101 = 5
+- 1010 = -5
+- 0101 + 1010 = 1111 (-0, it works!)
+
+Let's take another example.
+
+- 0101 = 5
+- 1100 = -3
+- 0101 + 1100 = 10001
+- 0001 != 2 (it equals 1, which is flawed)
+
+As we can see, it is better than having a bit flag that indicates the negativity of a number, but it still has issues.
+
+### Twos Complement
+
+If you look closely at the second example above, you'll notice that the answer is off by one bit (0010 is the correct result). This is exactly what is the twos complement; we do the ones complement and then add 1. Let's take our 5 + -5 example again.
+
+- 0101 = 5
+- 1011 = -5
+- 0101 + 1011 = 0000
+
+As you can see, with the twos complement, we do not have 2 states to represent 0. Moreover, if you do the 5 + -3 example again, you'll see that the answer is not correct.
+
+In other words, computers do not **exactly** substract numbers, they add negative numbers.
+
+## Putting Everything Together
+
+Now that we have the theory nailed down, let's see how we actually build this ALU. This part of the CPU will take its own breadboad. This module will be between the A register and the B register.
+
+## How it Looks so Far 
+
+
+
+# Up Next ...
+
+
+
+
+[x] We will be able to add and substract. We wont be able to do logic calculation (boolean arithmetic)
+[x] How do computers add numbers?
+[x] How do computers substract numbers?
+    [x] How to represent negative numbers? (then add)
+[ ] ALU between A and B, will always output the sum, has a flag for substraction
+[ ] For simplicity on the board, we use 2 4-bit adders, with the carry out of one connected to the carry in of the other (8 bit adder total)
+[ ] Same tri-state logic as the registers, since the output of the ALU will always be on (LEDs) for debugging
+    [ ] Flag sum out to enable pushing to the bus
+[ ] We use XOR gates to do the inversion of the B reg when we want to substract (and a sub flag for the ones complement)
+[ ] Building it: put the ALU in between A and B and connect the power between the boards
+    [ ] Stripped the power from the ALU board to gain some space, plus we will use those strips to build the bus latter on
+    [ ] We connect the clock to all the modules (ALU will compute on every tick)
+[ ] Image
+[ ] Conclusion and next steps
