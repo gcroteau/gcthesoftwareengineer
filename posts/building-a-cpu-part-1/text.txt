@@ -1,6 +1,6 @@
 Title: Building an 8 Bit CPU from Scratch - Part I
 Category: Personal Projects, Electronics
-Tags: Hardware
+Tags: Hardware, DIY
 
 # Wait, Building a CPU?
 
@@ -31,5 +31,3 @@ So, if you read attentively, you would have noticed that even the CPU clock has 
 As you can see, the clock module takes up an entire breadboard. This is mainly because of the fact that the clock can be used in two different modes: continuous and manual. The continuous mode is making the clock tick at a regular interval, as one would expect. It is done via the 555 timer chip on the left. The clock speed is controlled by the nob (and the capacitor, but this is all explained in great details in the videos). The manual mode is done via the second 555 timer. Each time you press the button, the clock will tick once. Finally, you have a switch and a logic circuit to decide which mode is in use. The blue LED is flashing at each clock tick, regardless of what mode the clock is in. To finish, you might notice the purple wire. This will be used later to programmatically stop the clock for debugging purposes. For now, it is connected directly to the ground. That's a very, very brief overview of what is going on here. As said earlier, thorough explanations are provided in the tutorials.
 
 This is the beginning of a long, but very exiting project. I expect to write one blog post per kit. Next time I write on this project should be about completing the registers and the ALU!
-
-TODO: clarify category and tags
