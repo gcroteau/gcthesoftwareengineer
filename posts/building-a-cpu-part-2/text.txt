@@ -1,0 +1,37 @@
+Title: Building an 8 Bit CPU from Scratch - Part II
+Category: Personal Projects, Electronics
+Tags: Hardware
+
+# Building the Registers
+
+Last time in this series, we built the [clock module](LINK TO PART I) (as a reminder, we are following [Ben Eater's project](LINK TO THE PAGE)). Now, we move on to building the registers. Our 8-bit CPU will have 2 registers, A and B, and an instruction register. The registers A and B will be used to store the 8-bit values that we will do arithmetic on. In other terms, those 2 will be the inputs for the Arithmetic Logic Unit (ALU). The instruction register on the other hand will be used to store the pointer to the instruction that the CPU must execute. This will be used later on in this series, but since it is built pretty much exactly as the other registers, we are building it now.
+
+## How it Works
+
+The registers have 2 important flags; load and enable. When the load flag is up, the content of the bus is loaded into the register. When the enable flag is up, the content of the register is put on the bus. Only one of those flag can be enabled at a time. The registers are connected to the clock. Meaning that they will load or push to the bus on a clock pulse. The bus, as you might know, is used to transfer data from one module to all the different modules of our CPU (register A and B, the memory, etc.).
+
+In order to save space, each register is built using 2 4-bit D type register chips. Those type of registers are using D flipflops to store the data. One D flipflop stores 1 bit and there are 4 of them per D type register chip. This makes each one store 4-bit. Having 2 of them, we have a total of 8 bits.
+
+To ease troubleshooting, the output of those chips will always be on. This allows us to always see the content of each register, using LEDs. However, since those chips are always on, we don't want to connect their output directly into the bus. Otherwise, we would not be able to decide when to push to or load from bus (all the registers would be pushing all the time). To solve this issue, we add a tri-state chip between the bus and the register chips outputs. By enabling the tri-state chip, the register outputs to the bus. When enabling the load flags on the registers chips, the register loads the content of the bus.
+
+Finally, the whole CPU will have a clear function. This will be usefull when trouble shooting an issue and we want to put the CPU in a clean state. Therefore, everything is setup to connect the registers to the future clear function, which we will built later on.
+
+One thing to note regarding the IR. The 4 most significant bits of that register will go to the intruction decoder (which will be built later). The least significant bits are outputted on the bus. Those will be typically used to output and address to the bus.
+
+## How it Looks so Far
+
+Here we can see a register that is outping its content to the bus (the yellow LEDs). Note that it is a temporary bus for testing pursposes. We will build the real one later. Moreover, notice that I soldered the resitors directly on the LEDs. This is not mandatory, but I did end up saving a lot of space. I decided to do that with all the LEDs moving forward.
+
+[cpu-p2-1]
+
+Here we have manually set the content of the register to the binary representation of the integer 203.
+
+[cpu-p2-2]
+
+Finally, we can push the content of the regiter to the bus. Doing so, all of the future components of the CPU will be able to grab that information.
+
+[cpu-p2-3]
+
+# Up Next ...
+
+Next up we will build the Arithmetic Logic Unit (ALU). Some might call it the actual brain of the CPU. This will allow it to do mathematical operations on the values contained in our 2 registers.
